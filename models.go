@@ -7,6 +7,11 @@ import (
 	"gorm.io/gorm"
 )
 
+type Car struct {
+	ID   string `json:"id" gorm:"type:varchar(36);primaryKey;"`
+	Name string `json:"name" gorm:"type:varchar(255)"`
+}
+
 // User has one `Account` (has one), many `Pets` (has many) and `Toys` (has many - polymorphic)
 // He works in a Company (belongs to), he has a Manager (belongs to - single-table), and also managed a Team (has many - single-table)
 // He speaks many languages (many to many) and has many friends (many to many - single-table)

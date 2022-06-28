@@ -54,6 +54,7 @@ func OpenTestConnection() (db *gorm.DB, err error) {
 		log.Println("testing postgres...")
 		if dbDSN == "" {
 			dbDSN = "user=gorm password=gorm host=localhost dbname=gorm port=9920 sslmode=disable TimeZone=Asia/Shanghai"
+			// dbDSN = "user=postgres password= host=localhost dbname=gorm port=5432 sslmode=disable TimeZone=Asia/Shanghai"
 		}
 		db, err = gorm.Open(postgres.Open(dbDSN), &gorm.Config{})
 	case "sqlserver":
@@ -83,7 +84,7 @@ func OpenTestConnection() (db *gorm.DB, err error) {
 
 func RunMigrations() {
 	var err error
-	allModels := []interface{}{&User{}, &Account{}, &Pet{}, &Company{}, &Toy{}, &Language{}}
+	allModels := []interface{}{&User{}, &Account{}, &Pet{}, &Company{}, &Toy{}, &Language{}, &Car{}}
 	rand.Seed(time.Now().UnixNano())
 	rand.Shuffle(len(allModels), func(i, j int) { allModels[i], allModels[j] = allModels[j], allModels[i] })
 
